@@ -24,14 +24,30 @@
             <button onclick="redirectToProducts()">Shop Now</button>
         </section>
 
-        <section id="products">
-            <!-- Products will be dynamically inserted here -->
+        <section id="filter-options">
+            <select id="category-filter">
+                <option value="">All Categories</option>
+            </select>
+        
+            <select id="item-count">
+                <option value="5">5 items per page</option>
+                <option value="10">10 items per page</option>
+                <option value="20">20 items per page</option>
+            </select>
         </section>
+        
+        <section id="products">
+        </section>
+
+        <section id="pagination-controls">
+            <button id="prev-page" disabled>Previous</button>
+            <span id="page-info">Page 1</span>
+            <button id="next-page">Next</button>
+        </section>        
 
         <section id="cart">
             <h2>Shopping Cart</h2>
             <div id="cart-items">
-                <!-- Cart items will be dynamically inserted here -->
             </div>
             <div id="cart-summary">
                 <div>

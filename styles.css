@@ -89,6 +89,24 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(255, 221, 87, 0.3);
 }
 
+/* Filter Section */
+#filter-options {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+#filter-options select {
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #ffdd57;
+    border-radius: 5px;
+}
+
 /* Product Section */
 #products {
     display: grid;
@@ -136,6 +154,35 @@ nav ul li a:hover {
     background-color: #fff;
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(255, 221, 87, 0.3);
+}
+
+/* Pagination Section */
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#pagination-controls button {
+    background-color: #ffdd57;
+    color: #1c1c1c;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pagination-controls button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+#pagination-controls span {
+    color: #ffdd57;
+    font-weight: bold;
 }
 
 /* Cart Section */
