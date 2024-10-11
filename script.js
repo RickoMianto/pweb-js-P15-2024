@@ -16,7 +16,7 @@ let products = [];
 let cart = [];
 let categories = [];
 let currentFilteredProducts = [];
-let itemCount = 5;  // Default item count per page
+let itemCount = 5;
 let currentPage = 1;
 let totalPages = 1;
 
@@ -125,7 +125,7 @@ categoryFilterContainer.addEventListener('change', function (e) {
 // Change number of items per page
 itemCountSelect.addEventListener('change', function (e) {
     itemCount = parseInt(e.target.value);
-    currentPage = 1;  // Reset ke halaman 1 saat jumlah produk berubah
+    currentPage = 1;
     renderProducts(currentFilteredProducts.length > 0 ? currentFilteredProducts : products);
 });
 
