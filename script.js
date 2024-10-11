@@ -15,6 +15,7 @@ let categories = [];
 
 // Fetch products from API
 async function fetchProducts() {
+    console.log('Fetching products...');
     try {
         const response = await fetch(API_URL);
         if (!response.ok) throw new Error('Failed to fetch products');
@@ -22,6 +23,7 @@ async function fetchProducts() {
         const data = await response.json();
         products = data.products;
         categories = [...new Set(products.map(product => product.category))];
+        console.log('Products fetched:', products.length);
         renderProducts();
         renderCategoryFilters();
     } catch (error) {
@@ -36,6 +38,11 @@ function redirectToProducts() {
 
 // Render products
 function renderProducts(filteredProducts = products) {
+    console.log('Rendering products:', filteredProducts.length);
+    if (!productsContainer) {
+        console.error('Products container not found');
+        return;
+    }
     productsContainer.innerHTML = filteredProducts.map(product => `
         <div class="product-card">
             <img src="${product.thumbnail}" alt="${product.title}">
@@ -44,10 +51,15 @@ function renderProducts(filteredProducts = products) {
             <button onclick="addToCart(${product.id})">Add to Cart</button>
         </div>
     `).join('');
+    console.log('Products rendered');
 }
 
 // Render category filters
 function renderCategoryFilters() {
+    if (!categoryFilterContainer) {
+        console.error('Category filter container not found');
+        return;
+    }
     categoryFilterContainer.innerHTML = categories.map(category => `
         <button onclick="filterByCategory('${category}')">${category}</button>
     `).join('');
@@ -55,6 +67,7 @@ function renderCategoryFilters() {
 
 // Filter products by category
 function filterByCategory(category) {
+    console.log('Filtering by category:', category);
     const filteredProducts = products.filter(product => product.category === category);
     renderProducts(filteredProducts);
 }
@@ -76,22 +89,30 @@ function addToCart(productId) {
 
 // Update cart
 function updateCart() {
+    if (!cartItemsContainer) {
+        console.error('Cart items container not found');
+        return;
+    }
     cartItemsContainer.innerHTML = cart.map(item => `
-        <div>
-            <h4>${item.title}</h4>
-            <p>Price: $${item.price}</p>
-            <p>Quantity: ${item.quantity}</p>
-            <button onclick="removeFromCart(${item.id})">Remove</button>
-            <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
-            <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <h4>${item.title}</h4>
+                <p>Price: $${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+            </div>
+            <div class="cart-item-actions">
+                <button onclick="removeFromCart(${item.id})">Remove</button>
+                <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+            </div>
         </div>
     `).join('');
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    totalItemsElement.textContent = totalItems;
-    totalPriceElement.textContent = totalPrice.toFixed(2);
+    if (totalItemsElement) totalItemsElement.textContent = totalItems;
+    if (totalPriceElement) totalPriceElement.textContent = totalPrice.toFixed(2);
 }
 
 // Remove item from cart
@@ -130,23 +151,33 @@ function loadCartFromLocalStorage() {
 }
 
 // Checkout button logic
-checkoutBtn.addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert("Your cart is empty. Add items before checkout.");
-    } else {
-        alert(`Checkout successful! You have ${cart.length} item(s) worth $${totalPriceElement.textContent}.`);
-        cart = []; // Clear the cart
-        updateCart(); // Update the cart display
-        saveCartToLocalStorage(); // Clear the local storage
-    }
-});
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert("Your cart is empty. Add items before checkout.");
+        } else {
+            alert(`Checkout successful! You have ${cart.length} item(s) worth $${totalPriceElement.textContent}.`);
+            cart = []; // Clear the cart
+            updateCart(); // Update the cart display
+            saveCartToLocalStorage(); // Clear the local storage
+        }
+    });
+}
 
 // Change number of items per page
-itemCountSelect.addEventListener('change', (e) => {
-    const itemCount = parseInt(e.target.value);
-    renderProducts(products.slice(0, itemCount));
-});
+if (itemCountSelect) {
+    itemCountSelect.addEventListener('change', (e) => {
+        const itemCount = parseInt(e.target.value);
+        renderProducts(products.slice(0, itemCount));
+    });
+}
 
 // Initialize
-fetchProducts();
-loadCartFromLocalStorage();
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+    fetchProducts();
+    loadCartFromLocalStorage();
+});
+
+// Log initial state
+console.log('Script loaded');

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lies Jaya E-Commerce Store</title>
+    <link href="styles.css"" rel="stylesheet">
 </head>
-<body>    
+<body>
     <header>
-        <h1>E-Commerce Store</h1>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -19,44 +18,33 @@
     </header>
 
     <main>
-        <!-- Landing Page Section -->
-        <div id="landing-page">
-            <header>
-                <h1>Welcome to Lies Jaya</h1>
-                <p>Your one-stop shop for quality products</p>
-                <button onclick="redirectToProducts()">Shop Now</button>
-            </header>
-        </div>
-
-        <section id="filters">
-            <h2>Filters</h2>
-            <div id="category-filter"></div>
-            <div id="items-per-page">
-                <label for="item-count">Items per page:</label>
-                <select id="item-count">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-            </div>
+        <section id="landing-page">
+            <h1>Welcome to Lies Jaya</h1>
+            <p>Your one-stop shop for quality products at unbeatable prices</p>
+            <button onclick="redirectToProducts()">Shop Now</button>
         </section>
 
-        <section id="products"></section>
+        <section id="products">
+            <!-- Products will be dynamically inserted here -->
+        </section>
 
         <section id="cart">
             <h2>Shopping Cart</h2>
-            <div id="cart-items"></div>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
             <div id="cart-summary">
-                <p>Total Items: <span id="total-items">0</span></p>
-                <p>Total Price: $<span id="total-price">0</span></p>
+                <div>
+                    <p>Total Items: <span id="total-items">0</span></p>
+                    <p>Total Price: $<span id="total-price">0.00</span></p>
+                </div>
                 <button id="checkout-btn">Checkout</button>
             </div>
         </section>
-        
     </main>
 
     <footer>
-        <p>&copy; 2024 E-Commerce Store. All rights reserved.</p>
+        <p>&copy; 2024 Lies Jaya E-Commerce Store. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
