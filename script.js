@@ -31,6 +31,10 @@ async function fetchProducts() {
     }
 }
 
+function redirectToProducts() {
+    window.location.href = "#products";  // Adjust based on your product section
+}
+
 // Render products
 function renderProducts(filteredProducts = products) {
     productsContainer.innerHTML = filteredProducts.map(product => `
