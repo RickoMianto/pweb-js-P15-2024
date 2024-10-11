@@ -1,3 +1,48 @@
+/* Landing Page Styles */
+#landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#landing-page header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#landing-page h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#landing-page p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#landing-page button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#landing-page button:hover {
+    background-color: #ddd;
+}
+
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
