@@ -17,9 +17,8 @@ let categories = [];
 async function fetchProducts() {
     try {
         const response = await fetch(API_URL);
-        if (!response.ok) {
-            throw new Error('Failed to fetch products');
-        }
+        if (!response.ok) throw new Error('Failed to fetch products');
+        
         const data = await response.json();
         products = data.products;
         categories = [...new Set(products.map(product => product.category))];
@@ -32,7 +31,7 @@ async function fetchProducts() {
 }
 
 function redirectToProducts() {
-    window.location.href = "#products";  // Adjust based on your product section
+    window.location.href = "#products";
 }
 
 // Render products
@@ -129,6 +128,18 @@ function loadCartFromLocalStorage() {
         updateCart();
     }
 }
+
+// Checkout button logic
+checkoutBtn.addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert("Your cart is empty. Add items before checkout.");
+    } else {
+        alert(`Checkout successful! You have ${cart.length} item(s) worth $${totalPriceElement.textContent}.`);
+        cart = []; // Clear the cart
+        updateCart(); // Update the cart display
+        saveCartToLocalStorage(); // Clear the local storage
+    }
+});
 
 // Change number of items per page
 itemCountSelect.addEventListener('change', (e) => {

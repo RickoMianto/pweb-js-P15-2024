@@ -20,19 +20,17 @@
 
     <main>
         <!-- Landing Page Section -->
-    <div id="landing-page">
-        <header>
-            <h1>Welcome to Lies Jaya</h1>
-            <p>Your one-stop shop for quality products</p>
-            <button onclick="redirectToProducts()">Shop Now</button>
-        </header>
-    </div>
+        <div id="landing-page">
+            <header>
+                <h1>Welcome to Lies Jaya</h1>
+                <p>Your one-stop shop for quality products</p>
+                <button onclick="redirectToProducts()">Shop Now</button>
+            </header>
+        </div>
 
         <section id="filters">
             <h2>Filters</h2>
-            <div id="category-filter">
-                <!-- Category filters will be dynamically added here -->
-            </div>
+            <div id="category-filter"></div>
             <div id="items-per-page">
                 <label for="item-count">Items per page:</label>
                 <select id="item-count">
@@ -43,21 +41,18 @@
             </div>
         </section>
 
-        <section id="products">
-            <!-- Products will be dynamically added here -->
-        </section>
+        <section id="products"></section>
 
         <section id="cart">
             <h2>Shopping Cart</h2>
-            <div id="cart-items">
-                <!-- Cart items will be dynamically added here -->
-            </div>
+            <div id="cart-items"></div>
             <div id="cart-summary">
                 <p>Total Items: <span id="total-items">0</span></p>
                 <p>Total Price: $<span id="total-price">0</span></p>
                 <button id="checkout-btn">Checkout</button>
             </div>
         </section>
+        
     </main>
 
     <footer>
