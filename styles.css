@@ -17,6 +17,9 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
@@ -44,6 +47,30 @@ nav ul li a {
 nav ul li a:hover {
     background-color: #ffdd57;
     color: #1c1c1c;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
 }
 
 /* Landing Page */
@@ -266,4 +293,11 @@ nav ul li a:hover {
     color: #1c1c1c;
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(255, 221, 87, 0.3);
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    padding: 20px;
+    color: #f0f0f0;
 }
